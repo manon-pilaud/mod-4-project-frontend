@@ -10,7 +10,6 @@ class Calendar extends React.Component {
 
   renderHeader() {
     const dateFormat = "MMMM YYYY";
-
     return (
       <div className="header row flex-middle">
         <div className="col col-start">
@@ -45,7 +44,7 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
-  renderCells() {
+  renderCells(props) {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
@@ -74,7 +73,10 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-          <Days goToDay={this.props.goToDay} dayInfo={day}/>
+          <Days
+            goToDay={this.props.goToDay}
+            dayInfo={day}
+            />
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
