@@ -45,20 +45,23 @@ class App extends React.Component {
         </header>
         <main>
 
-
-      <Route path="/days" render={()=>(
+      {this.state.clickedDay?
+        <Route path="/days" render={()=>(
             <DayView
-                 dayInfo={this.state.clickedDay}
-              />
-          )}
-      />
+                dayInfo={this.state.clickedDay}
+            />
+               )}
+        />:
+      null}
 
       <Route path="/calendar" render={()=>(
             this.state.clickedDay?(
                 <Redirect to="/days"/>
             ):(
                 <Calendar
-                  viewDay={this.viewDay}/>
+                  viewDay={this.viewDay}
+                  mapDays={this.state.days}
+                  />
               )
           )}
         />

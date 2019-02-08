@@ -43,7 +43,7 @@ class Calendar extends React.Component {
 
     return <div className="days row">{days}</div>;
   }
-
+//How can I render a day component to the correct cell if the day exists and not render anything if it doesn't
   renderCells(props) {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
@@ -90,7 +90,6 @@ class Calendar extends React.Component {
       );
       days = [];
     }
-
     return <div className="body">{rows}</div>;
   }
 

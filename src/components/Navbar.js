@@ -13,7 +13,7 @@ const Navbar=()=>{
     <a>Today</a>
     </span>
     <div id="logo">
-      <span className="icon">date_range</span>
+      <span className="icon">view_list</span>
       <span>
         Bullet<b>Journal</b>
       </span>
