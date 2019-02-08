@@ -1,6 +1,6 @@
 import React from "react";
 import dateFns from "date-fns";
-import Days from "./Days"
+import Day from "./Day"
 
 class Calendar extends React.Component {
   state = {
@@ -50,7 +50,7 @@ class Calendar extends React.Component {
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd);
-
+    let daysCollection = this.props.mapDays
 
     const dateFormat = "D";
     const rows = [];
@@ -63,6 +63,7 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
+        let dayObj = daysCollection.find(dayObj=> dayObj.date===day.toString().split(" ").splice(0,4).join(" "))
         days.push(
           <div
             className={`col cell ${
@@ -73,10 +74,10 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-          <Days
-            goToDay={this.props.goToDay}
-            dayInfo={day}
-            />
+          {dayObj?<Day
+            dayInfo={dayObj}
+            />:null
+          }
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
