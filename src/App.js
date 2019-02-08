@@ -46,20 +46,22 @@ class App extends React.Component {
         <main>
 
 
-          {this.state.clickedDay?
-             <DayView
-               dayInfo={this.state.clickedDay}
-               />
-             :null
-          }
+      <Route path="/days" render={()=>(
+            <DayView
+                 dayInfo={this.state.clickedDay}
+              />
+          )}
+      />
 
-
-          <Route path="/calendar" render={()=>
-              <Calendar
-                viewDay={this.viewDay}
-                />
-              }
-          />
+      <Route path="/calendar" render={()=>(
+            this.state.clickedDay?(
+                <Redirect to="/days"/>
+            ):(
+                <Calendar
+                  viewDay={this.viewDay}/>
+              )
+          )}
+        />
         </main>
       </div>
     );
