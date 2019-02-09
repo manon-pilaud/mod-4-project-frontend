@@ -6,14 +6,21 @@ body {
   background-image: radial-gradient(#999 5%, transparent 0)!important;
   background-size: 30px 30px!important;
 }
+.card-container{
+}
 
 .card {
-  display: inline-block!important;
-  width: 25%!important;
-  background-color: white!important;
-  padding: 30px 0px 30px 0px!important;
-  margin: 10px 10px!important;
+  background-color: white;
+  width: 180px!important;
+  height: 180px!important;
   text-align: center !important;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: thin;
+}
+
+.event-form{
+  width: 50%;
 }
 
 .nav-link{

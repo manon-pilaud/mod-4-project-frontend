@@ -36,6 +36,42 @@ class App extends React.Component {
       })
     })
   }
+  postEvent=(stateInfo)=>{
+    fetch('http://localhost:3000/events',{
+      method: "POST",
+      headers:{
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        time: stateInfo.eventTime,
+        name: stateInfo.eventName,
+        completed:false,
+        image:"",
+        day_id: this.state.clickedDay.id,
+        location: stateInfo.eventLocation
+      })
+    })
+    .then(res=>res.json())
+  }
+
+  postTask=(stateTaskInfo)=>{
+    fetch('http://localhost:3000/tasks',{
+      method: "POST",
+      headers:{
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        name: stateTaskInfo,
+        completed:false,
+        image:"",
+        day_id: this.state.clickedDay.id,
+        category: "not urgent"
+      })
+    })
+    .then(res=>res.json())
+  }
 
   render() {
     return (
@@ -49,6 +85,8 @@ class App extends React.Component {
         <Route path="/days" render={()=>(
             <DayView
                 dayInfo={this.state.clickedDay}
+                postEvent={this.postEvent}
+                postTask={this.postTask}
             />
                )}
         />:
