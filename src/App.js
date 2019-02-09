@@ -53,6 +53,20 @@ class App extends React.Component {
       })
     })
     .then(res=>res.json())
+    .then(newEvent=>{ this.updateDayEventInfo(newEvent)
+    })
+  }
+
+  updateDayEventInfo=(newEvent)=>{
+    let newDays = this.state.days.map(day=>{
+      if(day.id === newEvent.day_id){
+        return {...day, events:[...day.events,newEvent]}
+      }
+      return day
+    })
+    this.setState({
+      days: newDays
+    })
   }
 
   postTask=(stateTaskInfo)=>{
@@ -71,6 +85,20 @@ class App extends React.Component {
       })
     })
     .then(res=>res.json())
+    .then(newTask=>{ this.updateDayTaskInfo(newTask)
+    })
+  }
+
+  updateDayTaskInfo=(newTask)=>{
+    let newDays = this.state.days.map(day=>{
+      if(day.id === newTask.day_id){
+        return {...day, tasks:[...day.tasks,newTask]}
+      }
+      return day
+    })
+    this.setState({
+      days: newDays
+    })
   }
 
   render() {
