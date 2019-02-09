@@ -25,10 +25,6 @@ class App extends React.Component {
     })
   }
 
-  handleDayClick=(dayObj)=>{
-    console.log(dayObj)
-  }
-
   viewDay=(dateObj)=>{
     this.setState({
       currentDayView: dateObj
@@ -139,8 +135,8 @@ class App extends React.Component {
         <Route path="/days" render={()=>(
             <DayView
                 dayInfo={this.state.clickedDay}
-                postEvent={this.postEvent}
-                postTask={this.postTask}
+                handleEventSubmit={this.postEvent}
+                handleTaskSubmit={this.postTask}
             />
                )}
         />:
@@ -153,7 +149,7 @@ class App extends React.Component {
                 <Calendar
                   viewDay={this.viewDay}
                   mapDays={this.state.days}
-                  handleDayClick={this.handleDayClick}
+
                   />
               )
           )}

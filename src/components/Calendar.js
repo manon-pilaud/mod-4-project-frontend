@@ -76,7 +76,6 @@ class Calendar extends React.Component {
           >
           {dayObj?<Day
             dayInfo={dayObj}
-            handleDayClick={this.props.handleDayClick}
             />:null
           }
             <span className="number">{formattedDate}</span>
