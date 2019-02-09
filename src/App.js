@@ -25,17 +25,43 @@ class App extends React.Component {
     })
   }
 
+  handleDayClick=(dayObj)=>{
+    console.log(dayObj)
+  }
+
   viewDay=(dateObj)=>{
     this.setState({
       currentDayView: dateObj
     }, () => {
       let stringDate =  this.state.currentDayView.toString().split(" ").splice(0,4).join(" ")
       let dayInfo =this.state.days.find(day=> day.date===stringDate)
+      if (dayInfo){
       this.setState({
         clickedDay: dayInfo
       })
+    }else{
+      fetch('http://localhost:3000/days',{
+        method: "POST",
+        headers:{
+          "Content-Type" : "application/json",
+          "Accept" : "application/json"
+        },
+        body: JSON.stringify({
+          date: stringDate,
+          user_id:1
+        })
+      })
+      .then(res=>res.json())
+      .then(newDay=>{
+        this.setState({
+          days: [...this.state.days,newDay]
+        })
+      })
+    }
     })
   }
+
+
   postEvent=(stateInfo)=>{
     fetch('http://localhost:3000/events',{
       method: "POST",
@@ -127,6 +153,7 @@ class App extends React.Component {
                 <Calendar
                   viewDay={this.viewDay}
                   mapDays={this.state.days}
+                  handleDayClick={this.handleDayClick}
                   />
               )
           )}
