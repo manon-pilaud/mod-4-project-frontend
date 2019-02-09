@@ -9,7 +9,7 @@ export default class DayView extends React.Component{
 
   render(props){
     let {tasks,events,date} = this.props.dayInfo
-    return(
+    return this.props.dayInfo?(
       <div>
       <h1>{date}</h1>
       <br/>
@@ -20,8 +20,9 @@ export default class DayView extends React.Component{
       <br/>
         <EventList events={events}/>
       </div>
-    </div>
-    )
+    </div>)
+  :
+  null
 
   }
 }

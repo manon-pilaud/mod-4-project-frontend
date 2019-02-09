@@ -131,7 +131,6 @@ class App extends React.Component {
         </header>
         <main>
 
-      {this.state.clickedDay?
         <Route path="/days" render={()=>(
             <DayView
                 dayInfo={this.state.clickedDay}
@@ -139,8 +138,7 @@ class App extends React.Component {
                 handleTaskSubmit={this.postTask}
             />
                )}
-        />:
-      null}
+        />
 
       <Route path="/calendar" render={()=>(
             this.state.clickedDay?(
