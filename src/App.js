@@ -131,25 +131,28 @@ class App extends React.Component {
         </header>
         <main>
 
-        <Route path="/days" render={()=>(
-            <DayView
-                dayInfo={this.state.clickedDay}
-                handleEventSubmit={this.postEvent}
-                handleTaskSubmit={this.postTask}
-            />
-               )}
-        />
+        <Route exact={true} path="/days/:id" render={(props)=>{
+            let dayUrlId = props.match.params.id
+            let dayUrlIdInt = parseInt(dayUrlId)
+            let dayInfo = this.state.days.find(day => day.id === dayUrlIdInt)
+            console.log(dayInfo)
+            return(
+              <DayView
+                  dayInfo={dayInfo}
+                  handleEventSubmit={this.postEvent}
+                  handleTaskSubmit={this.postTask}
+              />
+            )
+        }
+      }
+      />
 
-      <Route path="/calendar" render={()=>(
-            this.state.clickedDay?(
-                <Redirect to="/days"/>
-            ):(
+    <Route exact={true} path="/days" render={()=>(
                 <Calendar
                   viewDay={this.viewDay}
                   mapDays={this.state.days}
 
                   />
-              )
           )}
         />
         </main>

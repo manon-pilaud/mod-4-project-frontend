@@ -8,17 +8,16 @@ import { Button, Checkbox, Form} from 'semantic-ui-react'
 export default class DayView extends React.Component{
 
   render(props){
-    let {tasks,events,date} = this.props.dayInfo
     return this.props.dayInfo?(
       <div>
-      <h1>{date}</h1>
+      <h1>{this.props.dayInfo.date}</h1>
       <br/>
       <EventForm handleEventSubmit={this.props.handleEventSubmit}/>
       <TaskForm handleTaskSubmit={this.props.handleTaskSubmit}/>
       <div className="card-container">
-      <TaskList tasks={tasks}/>
+      <TaskList tasks={this.props.dayInfo.tasks}/>
       <br/>
-        <EventList events={events}/>
+        <EventList events={this.props.dayInfo.events}/>
       </div>
     </div>)
   :
