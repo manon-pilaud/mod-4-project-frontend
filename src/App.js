@@ -11,8 +11,7 @@ class App extends React.Component {
     super()
     this.state={
       currentDayView: "",
-      days: [],
-      clickedDay: ""
+      days: []
     }
   }
   componentDidMount(){
@@ -31,11 +30,8 @@ class App extends React.Component {
     }, () => {
       let stringDate =  this.state.currentDayView.toString().split(" ").splice(0,4).join(" ")
       let dayInfo =this.state.days.find(day=> day.date===stringDate)
-      if (dayInfo){
-      this.setState({
-        clickedDay: dayInfo
-      })
-    }else{
+      let doesNotExist = this.state.days.find(day=>day===dayInfo)
+      if (!doesNotExist){
       fetch('http://localhost:3000/days',{
         method: "POST",
         headers:{
