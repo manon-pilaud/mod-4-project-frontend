@@ -2,6 +2,7 @@ import React from 'react'
 import {Card} from 'semantic-ui-react'
 
 export default class EventCard extends React.Component{
+  //Need to update,delete complete
   render(props){
     return(
       <div className="card">

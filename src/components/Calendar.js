@@ -1,6 +1,7 @@
 import React from "react";
 import dateFns from "date-fns";
 import Day from "./Day"
+import {Link} from 'react-router-dom'
 
 class Calendar extends React.Component {
   state = {
@@ -65,6 +66,7 @@ class Calendar extends React.Component {
         const cloneDay = day;
         let dayObj = daysCollection.find(dayObj=> dayObj.date===day.toString().split(" ").splice(0,4).join(" "))
         days.push(
+
           <div
             className={`col cell ${
               !dateFns.isSameMonth(day, monthStart)
@@ -74,9 +76,11 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-          {dayObj?<Day
+          {dayObj?
+            <Day
             dayInfo={dayObj}
-            />:null
+            />
+          :null
           }
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>

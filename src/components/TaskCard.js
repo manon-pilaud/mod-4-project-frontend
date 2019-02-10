@@ -3,6 +3,7 @@ import {Card} from 'semantic-ui-react'
 
 
 export default class TaskCard extends React.Component{
+    //Need to update,delete complete
   render(props){
     return(
 

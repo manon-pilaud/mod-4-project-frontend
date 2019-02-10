@@ -24,7 +24,7 @@ class App extends React.Component {
     })
   }
 
-  viewDay=(dateObj)=>{
+  createDay=(dateObj)=>{
     this.setState({
       currentDayView: dateObj
     }, () => {
@@ -49,6 +49,10 @@ class App extends React.Component {
           days: [...this.state.days,newDay]
         })
       })
+    }
+    else{
+      //Want to redirect here
+      console.log(dayInfo.id)
     }
     })
   }
@@ -143,7 +147,7 @@ class App extends React.Component {
 
     <Route exact={true} path="/days" render={()=>(
                 <Calendar
-                  viewDay={this.viewDay}
+                  viewDay={this.createDay}
                   mapDays={this.state.days}
 
                   />
