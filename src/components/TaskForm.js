@@ -7,7 +7,13 @@ export default class EventForm extends React.Component{
       this.state={
         taskForm: false,
         task: "",
+        dayId: null
       }
+  }
+  componentDidMount(){
+    this.setState({
+      dayId: this.props.dayId
+    })
   }
   handleTaskClick=()=>{
     this.setState({
@@ -24,7 +30,7 @@ export default class EventForm extends React.Component{
 
   handleTaskSubmit=(e)=>{
     e.preventDefault()
-    this.props.handleTaskSubmit(this.state.task)
+    this.props.handleTaskSubmit(this.state)
   }
   render(){
     return(

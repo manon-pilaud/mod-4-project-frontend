@@ -9,9 +9,16 @@ export default class EventForm extends React.Component{
         eventForm: false,
         eventName:"",
         eventTime:"",
-        eventLocation:""
+        eventLocation:"",
+        dayId: null
       }
   }
+  componentDidMount(){
+    this.setState({
+      dayId: this.props.dayId
+    })
+  }
+
   handleEventClick=()=>{
     this.setState({
       eventForm: !this.state.eventForm

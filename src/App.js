@@ -70,13 +70,12 @@ class App extends React.Component {
         name: stateInfo.eventName,
         completed:false,
         image:"",
-        day_id: this.state.clickedDay.id,
+        day_id: stateInfo.dayId,
         location: stateInfo.eventLocation
       })
     })
     .then(res=>res.json())
-    .then(newEvent=>{ this.updateDayEventInfo(newEvent)
-    })
+    .then(newEvent=>this.updateDayEventInfo(newEvent))
   }
 
   updateDayEventInfo=(newEvent)=>{
@@ -99,10 +98,10 @@ class App extends React.Component {
         "Accept" : "application/json"
       },
       body: JSON.stringify({
-        name: stateTaskInfo,
+        name: stateTaskInfo.task,
         completed:false,
         image:"",
-        day_id: this.state.clickedDay.id,
+        day_id: stateTaskInfo.dayId,
         category: "not urgent"
       })
     })
@@ -135,7 +134,6 @@ class App extends React.Component {
             let dayUrlId = props.match.params.id
             let dayUrlIdInt = parseInt(dayUrlId)
             let dayInfo = this.state.days.find(day => day.id === dayUrlIdInt)
-            console.log(dayInfo)
             return(
               <DayView
                   dayInfo={dayInfo}
