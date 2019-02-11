@@ -158,6 +158,50 @@ class App extends React.Component {
     })
   }
 
+  createQuote=(quoteInfo)=>{
+    fetch('http://localhost:3000/quotes',{
+      method: "POST",
+      headers:{
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        quote: quoteInfo.text,
+        day_id: quoteInfo.dayId
+      })
+    }).then(res=>res.json())
+    //Post not working not sure why 500 internal server error
+  }
+
+  createNote=(newNote)=>{
+    fetch('http://localhost:3000/notes',{
+      method: "POST",
+      headers:{
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        body: newNote.body,
+        name: newNote.title,
+        day_id: newNote.dayId
+      })
+    }).then(res=>res.json())
+    .then(newNote=>{ this.updateDayNoteInfo(newNote)
+    })
+  }
+
+  updateDayNoteInfo=(newNote)=>{
+    let newDays = this.state.days.map(day=>{
+      if(day.id === newNote.day_id){
+        return {...day, notes:[...day.notes,newNote]}
+      }
+      return day
+    })
+    this.setState({
+      days: newDays
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -177,6 +221,9 @@ class App extends React.Component {
                   handleTaskSubmit={this.postTask}
                   deleteTask={this.deleteTask}
                   deleteEvent={this.deleteEvent}
+                  submitQuote={this.createQuote}
+                  submitQuote={this.createNote}
+
               />
             )
         }

@@ -13,9 +13,13 @@ export default class DayView extends React.Component{
     return this.props.dayInfo?(
       <div>
         <h1 className="date-header">{this.props.dayInfo.date}</h1>
-        <Quote quote={this.props.dayInfo.quote}/>
+        <Quote
+          quote={this.props.dayInfo}
+          submitQuote={this.props.submitQuote}/>
         <br/>
-        <NotesList notes={this.props.dayInfo.notes}/>
+        <NotesList
+          notes={this.props.dayInfo}
+          submitQuote={this.props.submitQuote}/>
 
       <div className="task-container">
         <center>

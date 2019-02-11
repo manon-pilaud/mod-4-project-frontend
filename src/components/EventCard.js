@@ -31,13 +31,14 @@ export default class EventCard extends React.Component{
             <Card.Header>{this.props.event.name}</Card.Header>
 
             <Card.Meta>
-                <input type="checkbox" checked={this.state.completed} onChange={this.onCheck}></input>
-            </Card.Meta>
-            <Card.Meta>
                 Time:{this.props.event.time}
             </Card.Meta>
             <Card.Meta>
                 Location:{this.props.event.location}
+            </Card.Meta>
+            <br/>
+            <Card.Meta>
+              <input type="checkbox" checked={this.state.completed} onChange={this.onCheck}></input>
             </Card.Meta>
           </Card.Content>
         </Card>

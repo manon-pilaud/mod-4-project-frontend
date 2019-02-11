@@ -26,6 +26,12 @@ body {
   left:3%;
   top:30%;
 }
+.quote-input{
+  position: absolute;
+  top:15%;
+  left:3%;
+  width:650px
+}
 
 .note-list{
   background-color: white;

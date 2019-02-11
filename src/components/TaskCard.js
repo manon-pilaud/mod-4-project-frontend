@@ -29,6 +29,8 @@ export default class TaskCard extends React.Component{
               <div className="delete">
                   <div className="icon" onClick={()=>this.props.deleteTask(this.props.task)}>delete</div>
               </div>
+            <br/>
+            <br/>
             <Card.Meta>
                 <input type="checkbox" checked={this.state.completed} onChange={this.onCheck}></input>
             </Card.Meta>
