@@ -6,6 +6,16 @@ import TaskForm from './TaskForm'
 import { Button, Checkbox, Form} from 'semantic-ui-react'
 
 export default class DayView extends React.Component{
+  constructor(props){
+    super(props)
+      if (props.dayInfo){
+      this.state = {
+        tasksCollection: props.dayInfo.tasks,
+        eventsCollection: props.dayInfo.events
+      }
+      }
+  }
+
 
   render(props){
     return this.props.dayInfo?(
@@ -20,9 +30,15 @@ export default class DayView extends React.Component{
         handleTaskSubmit={this.props.handleTaskSubmit}
         dayId={this.props.dayInfo.id}/>
       <div className="card-container">
-      <TaskList tasks={this.props.dayInfo.tasks}/>
+      <TaskList
+        tasks={this.props.dayInfo.tasks}
+        deleteTask={this.props.deleteTask}
+        />
       <br/>
-        <EventList events={this.props.dayInfo.events}/>
+        <EventList
+          events={this.props.dayInfo.events}
+          deleteEvent={this.props.deleteEvent}
+          />
       </div>
     </div>)
   :

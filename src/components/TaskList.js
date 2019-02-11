@@ -8,7 +8,9 @@ export default class TaskList extends React.Component{
       <div>
     <Card.Group>
         {this.props.tasks.map((task,index)=>
-          <TaskCard key={index} task={task}/>
+          <TaskCard
+            key={index} task={task}
+            deleteTask={this.props.deleteTask}/>
           )
         }
     </Card.Group>

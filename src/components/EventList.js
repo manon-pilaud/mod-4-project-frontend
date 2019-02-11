@@ -6,7 +6,9 @@ export default class EventList extends React.Component{
     return(
       <div>
         {this.props.events.map((event,index)=>
-          <EventCard key={index} event={event}/>
+          <EventCard
+            key={index} event={event}
+            deleteEvent={this.props.deleteEvent}/>
           )
         }
       </div>

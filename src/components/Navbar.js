@@ -1,17 +1,19 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navbar=()=>{
   return(
     <div>
-    <span className="nav-link">
-    <a>Home</a>
-    </span>
-    <span className="nav-link">
-    <a>Calendar</a>
-    </span>
-    <span className="nav-link">
-    <a>Today</a>
-    </span>
+    <Link to={`/`}>
+      <span className="nav-link">
+        Home
+      </span>
+    </Link>
+    <Link to={`/calendar`}>
+      <span className="nav-link">
+        Calendar
+      </span>
+    </Link>
     <div id="logo">
       <span className="icon">view_list</span>
       <span>

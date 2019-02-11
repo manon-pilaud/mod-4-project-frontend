@@ -6,7 +6,7 @@ export default class Day extends React.Component{
     return(
         <div className="events">
           {this.props.dayInfo.events.map(event=>
-          <h6 key={event.id}>{event.name}<br/>{event.time}</h6>)}
+          <p key={event.id}>{event.name}-{event.time}</p>)}
         </div>
     )
   }

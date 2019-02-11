@@ -11,12 +11,9 @@ body {
 
 .card {
   background-color: white;
-  width: 180px!important;
-  height: 180px!important;
+  width: 170px!important;
+  height: 160px!important;
   text-align: center !important;
-  border-color: lightgrey;
-  border-style: solid;
-  border-width: thin;
 }
 
 .event-form{
@@ -50,8 +47,9 @@ body {
 
 .events{
   color:red;
-  font-size: 12px;
+  font-size: 8px;
   text-align: center;
+  font-weight: bold;
 }
 /* VARIABLES */
 

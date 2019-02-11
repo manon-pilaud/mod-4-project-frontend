@@ -11,7 +11,8 @@ class App extends React.Component {
     super()
     this.state={
       currentDayView: "",
-      days: []
+      days: [],
+      clickId: ""
     }
   }
   componentDidMount(){
@@ -51,8 +52,10 @@ class App extends React.Component {
       })
     }
     else{
-      //Want to redirect here
-      console.log(dayInfo.id)
+      //need a way to redirect to day
+      this.setState({
+        clickId: dayInfo.id
+      })
     }
     })
   }
@@ -122,6 +125,28 @@ class App extends React.Component {
     })
   }
 
+  deleteTask=(taskObj)=>{
+    fetch(`http://localhost:3000/tasks/${taskObj.id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(taskObj=>{
+      console.log(taskObj)
+
+    })
+  }
+
+  deleteEvent=(eventObj)=>{
+    fetch(`http://localhost:3000/events/${eventObj.id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(eventObj=>{
+      //Find way to refelct on front end
+      console.log(eventObj)
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -139,20 +164,22 @@ class App extends React.Component {
                   dayInfo={dayInfo}
                   handleEventSubmit={this.postEvent}
                   handleTaskSubmit={this.postTask}
+                  deleteTask={this.deleteTask}
+                  deleteEvent={this.deleteEvent}
               />
             )
         }
       }
       />
 
-    <Route exact={true} path="/days" render={()=>(
-                <Calendar
+    <Route exact={true} path="/calendar" render={()=>(
+            <Calendar
                   viewDay={this.createDay}
                   mapDays={this.state.days}
+            />
+      )}
+    />
 
-                  />
-          )}
-        />
         </main>
       </div>
     );
