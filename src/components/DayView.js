@@ -4,6 +4,8 @@ import EventList from './EventList'
 import EventForm from './EventForm'
 import TaskForm from './TaskForm'
 import { Button, Checkbox, Form} from 'semantic-ui-react'
+import Quote from './Quote'
+import NotesList from './NotesList'
 
 export default class DayView extends React.Component{
 
@@ -11,6 +13,10 @@ export default class DayView extends React.Component{
     return this.props.dayInfo?(
       <div>
         <h1 className="date-header">{this.props.dayInfo.date}</h1>
+        <Quote quote={this.props.dayInfo.quote}/>
+        <br/>
+        <NotesList notes={this.props.dayInfo.notes}/>
+
       <div className="task-container">
         <center>
           <h2>Tasks:</h2>
@@ -19,12 +25,14 @@ export default class DayView extends React.Component{
             dayId={this.props.dayInfo.id}/>
         </center>
         <br/>
-      <TaskList
-        tasks={this.props.dayInfo.tasks}
-        deleteTask={this.props.deleteTask}
-        />
-    </div>
+          <TaskList
+            tasks={this.props.dayInfo.tasks}
+            deleteTask={this.props.deleteTask}
+            />
+      </div>
+
       <br/>
+
       <div className="event-container">
         <center>
           <h2>Events:</h2>
