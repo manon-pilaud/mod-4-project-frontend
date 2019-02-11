@@ -32,10 +32,16 @@ body {
   left: 1%;
   top:15%;
 }
+.date-header{
+  position: absolute;
+  top:15%;
+  text-align: center;
+  left: 43%
+}
 
 
-.event-form{
-  width: 50%;
+.create-form{
+  width: 100% !important;
 }
 
 .nav-link{

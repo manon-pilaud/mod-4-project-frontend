@@ -39,7 +39,7 @@ export default class EventForm extends React.Component{
       <br/>
 
       {this.state.taskForm?
-      <Form onSubmit={this.handleTaskSubmit} className="event-form">
+      <Form onSubmit={this.handleTaskSubmit} className="create-form">
         <Form.Field>
           <label>Name</label>
           <input onChange={this.handleTaskChange} id="task" placeholder='Name' />

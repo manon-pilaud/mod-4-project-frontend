@@ -10,16 +10,15 @@ export default class DayView extends React.Component{
   render(props){
     return this.props.dayInfo?(
       <div>
-      <h1>{this.props.dayInfo.date}</h1>
-      <br/>
-      <EventForm
-        handleEventSubmit={this.props.handleEventSubmit}
-        dayId={this.props.dayInfo.id}
-        />
-      <TaskForm
-        handleTaskSubmit={this.props.handleTaskSubmit}
-        dayId={this.props.dayInfo.id}/>
+        <h1 className="date-header">{this.props.dayInfo.date}</h1>
       <div className="task-container">
+        <center>
+          <h2>Tasks:</h2>
+          <TaskForm
+            handleTaskSubmit={this.props.handleTaskSubmit}
+            dayId={this.props.dayInfo.id}/>
+        </center>
+        <br/>
       <TaskList
         tasks={this.props.dayInfo.tasks}
         deleteTask={this.props.deleteTask}
@@ -27,6 +26,14 @@ export default class DayView extends React.Component{
     </div>
       <br/>
       <div className="event-container">
+        <center>
+          <h2>Events:</h2>
+          <EventForm
+            handleEventSubmit={this.props.handleEventSubmit}
+            dayId={this.props.dayInfo.id}
+            />
+        </center>
+        <br/>
         <EventList
           events={this.props.dayInfo.events}
           deleteEvent={this.props.deleteEvent}

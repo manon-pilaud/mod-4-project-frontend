@@ -42,7 +42,7 @@ export default class EventForm extends React.Component{
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
         <button onClick={this.handleEventClick}>CreateEvent</button>
         {this.state.eventForm?
-        <Form onSubmit={this.handleEventSubmit} className="event-form">
+        <Form onSubmit={this.handleEventSubmit} className="create-form">
           <Form.Field>
             <label>Name</label>
             <input onChange={this.handleEventChange} id="eventName" placeholder='Name' />
