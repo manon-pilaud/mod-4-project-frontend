@@ -233,6 +233,7 @@ main {
 }
 
 .calendar .body .cell .number {
+  position: absolute;
   font-size: 82.5%;
   line-height: 1;
   top: .75em;
@@ -245,7 +246,7 @@ main {
   pointer-events: none;
 }
 
-.calendar .cell .bg {
+.calendar .body .cell .bg {
   font-weight: 700;
   line-height: 1;
   color: var(--main-color);
