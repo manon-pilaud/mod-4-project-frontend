@@ -6,16 +6,6 @@ import TaskForm from './TaskForm'
 import { Button, Checkbox, Form} from 'semantic-ui-react'
 
 export default class DayView extends React.Component{
-  constructor(props){
-    super(props)
-      if (props.dayInfo){
-      this.state = {
-        tasksCollection: props.dayInfo.tasks,
-        eventsCollection: props.dayInfo.events
-      }
-      }
-  }
-
 
   render(props){
     return this.props.dayInfo?(

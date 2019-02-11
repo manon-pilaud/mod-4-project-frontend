@@ -131,7 +131,13 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(taskObj=>{
-      console.log(taskObj)
+      let copyDays = [...this.state.days]
+      let dayToModify = copyDays.find(day=>day.id=== taskObj.day_id)
+      let index = dayToModify.tasks.findIndex(ev=>ev.id === taskObj.id)
+      dayToModify.tasks.splice(index,1)
+      this.setState({
+        days: copyDays
+      })
 
     })
   }
@@ -142,8 +148,13 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(eventObj=>{
-      //Find way to refelct on front end
-      console.log(eventObj)
+      let copyDays = [...this.state.days]
+      let dayToModify = copyDays.find(day=>day.id=== eventObj.day_id)
+      let index = dayToModify.events.findIndex(ev=>ev.id === eventObj.id)
+      dayToModify.events.splice(index,1)
+      this.setState({
+        days: copyDays
+      })
     })
   }
 
