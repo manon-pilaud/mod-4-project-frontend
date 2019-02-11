@@ -19,17 +19,20 @@ export default class DayView extends React.Component{
       <TaskForm
         handleTaskSubmit={this.props.handleTaskSubmit}
         dayId={this.props.dayInfo.id}/>
-      <div className="card-container">
+      <div className="task-container">
       <TaskList
         tasks={this.props.dayInfo.tasks}
         deleteTask={this.props.deleteTask}
         />
+    </div>
       <br/>
+      <div className="event-container">
         <EventList
           events={this.props.dayInfo.events}
           deleteEvent={this.props.deleteEvent}
           />
       </div>
+
     </div>)
   :
   null

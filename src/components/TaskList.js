@@ -6,14 +6,15 @@ export default class TaskList extends React.Component{
   render(props){
     return(
       <div>
-    <Card.Group>
+        <center>
+          <h2>Tasks:</h2>
+        </center>
         {this.props.tasks.map((task,index)=>
           <TaskCard
             key={index} task={task}
             deleteTask={this.props.deleteTask}/>
           )
         }
-    </Card.Group>
       </div>
     )
   }

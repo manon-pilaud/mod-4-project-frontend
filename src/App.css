@@ -2,11 +2,15 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 body {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-color);
+  position: relative;
   background: rgb(248, 240, 241)!important;
   background-image: radial-gradient(#999 5%, transparent 0)!important;
   background-size: 30px 30px!important;
-}
-.card-container{
 }
 
 .card {
@@ -14,7 +18,21 @@ body {
   width: 170px!important;
   height: 160px!important;
   text-align: center !important;
+  display: block !important;
 }
+
+.event-container{
+  position: absolute;
+  right: 1%;
+  top:15%;
+}
+
+.task-container{
+  position: absolute;
+  left: 1%;
+  top:15%;
+}
+
 
 .event-form{
   width: 50%;
@@ -69,15 +87,6 @@ body {
   box-sizing: border-box;
 }
 
-body {
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--text-color);
-    background: var(--bg-color);
-    position: relative;
-}
 
 header {
   display: block;
@@ -224,7 +233,6 @@ main {
 }
 
 .calendar .body .cell .number {
-  position: absolute;
   font-size: 82.5%;
   line-height: 1;
   top: .75em;
@@ -237,7 +245,7 @@ main {
   pointer-events: none;
 }
 
-.calendar .body .cell .bg {
+.calendar .cell .bg {
   font-weight: 700;
   line-height: 1;
   color: var(--main-color);
