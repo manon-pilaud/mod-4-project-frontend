@@ -166,7 +166,7 @@ class App extends React.Component {
         "Accept" : "application/json"
       },
       body: JSON.stringify({
-        quote: quoteInfo.text,
+        phrase: quoteInfo.text,
         day_id: quoteInfo.dayId
       })
     })

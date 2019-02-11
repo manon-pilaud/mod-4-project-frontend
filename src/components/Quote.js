@@ -25,7 +25,7 @@ handleSubmit=(e)=>{
         <div className="quote-div">
           {this.props.quote.quote?
           <div className="quote">
-            Today's Quote: {this.props.quote.quote.quote}.
+            Today's Quote: {this.props.quote.quote.phrase}.
           </div>
           :<form onSubmit={this.handleSubmit}>
             <input onChange={this.handleChange} className="quote-input" placeholder="Enter Quote"></input>}
