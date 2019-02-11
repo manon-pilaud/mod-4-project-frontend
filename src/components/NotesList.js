@@ -15,7 +15,7 @@ export default class NotesList extends React.Component{
         }
         <NoteForm
         dayId={this.props.notes.id}
-        submitQuote={this.props.submitQuote}/>
+        submitNote={this.props.submitNote}/>
         </div>
     )
   }

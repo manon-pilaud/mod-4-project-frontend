@@ -32,7 +32,7 @@ export default class NotesForm extends React.Component{
 
     handleSubmit=(e)=>{
       e.preventDefault()
-      return this.props.submitQuote(this.state)
+      return this.props.submitNote(this.state)
     }
 
   render(props){

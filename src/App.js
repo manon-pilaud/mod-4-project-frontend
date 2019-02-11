@@ -169,11 +169,11 @@ class App extends React.Component {
         quote: quoteInfo.text,
         day_id: quoteInfo.dayId
       })
-    }).then(res=>res.json())
+    })
     //Post not working not sure why 500 internal server error
   }
 
-  createNote=(newNote)=>{
+  createNewNote=(newNote)=>{
     fetch('http://localhost:3000/notes',{
       method: "POST",
       headers:{
@@ -222,7 +222,7 @@ class App extends React.Component {
                   deleteTask={this.deleteTask}
                   deleteEvent={this.deleteEvent}
                   submitQuote={this.createQuote}
-                  submitQuote={this.createNote}
+                  submitNote={this.createNewNote}
 
               />
             )
