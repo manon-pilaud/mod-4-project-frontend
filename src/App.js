@@ -158,7 +158,7 @@ class App extends React.Component {
     })
   }
 
-  createQuote=(quoteInfo)=>{
+  createQuote=(newQuote)=>{
     fetch('http://localhost:3000/quotes',{
       method: "POST",
       headers:{
@@ -166,12 +166,26 @@ class App extends React.Component {
         "Accept" : "application/json"
       },
       body: JSON.stringify({
-        phrase: quoteInfo.text,
-        day_id: quoteInfo.dayId
+        phrase: newQuote.text,
+        day_id: newQuote.dayId
       })
-    })
-    //Post not working not sure why 500 internal server error
+    }).then(res=>res.json())
+    .then(newQuote=>this.updateDayQuoteInfo(newQuote))
   }
+
+  updateDayQuoteInfo=(newQuote)=>{
+    let newDays = this.state.days.map(day=>{
+      if(day.id === newQuote.day_id){
+        return {...day, quote:newQuote}
+      }
+      return day
+    })
+    this.setState({
+      days: newDays
+    })
+  }
+
+
 
   createNewNote=(newNote)=>{
     fetch('http://localhost:3000/notes',{
