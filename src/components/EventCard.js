@@ -24,11 +24,12 @@ export default class EventCard extends React.Component{
       <Card className="card">
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
           <Card.Content>
+            <div className="delete">
+              <div className="icon"
+                onClick={()=>this.props.deleteEvent(this.props.event)}>delete</div>
+            </div>
             <Card.Header>{this.props.event.name}</Card.Header>
-              <Card.Meta>
-                  <button id="delete-button"
-                    onClick={()=>this.props.deleteEvent(this.props.event)}>X</button>
-              </Card.Meta>
+
             <Card.Meta>
                 <input type="checkbox" checked={this.state.completed} onChange={this.onCheck}></input>
             </Card.Meta>

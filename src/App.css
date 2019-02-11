@@ -20,7 +20,11 @@ body {
   text-align: center !important;
   display: block !important;
 }
-
+.delete{
+  position: absolute;
+  right:2% !important;
+  top:2%;
+}
 .event-container{
   position: absolute;
   right: 1%;
@@ -38,6 +42,7 @@ body {
   text-align: center;
   left: 43%
 }
+
 
 
 .create-form{
@@ -275,3 +280,7 @@ main {
   flex-basis: calc(100%/7);
   width: calc(100%/7);
 }
+
+
+
+/*Checkbok*/

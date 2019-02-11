@@ -26,9 +26,9 @@ export default class TaskCard extends React.Component{
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
           <Card.Content>
             <Card.Header>{this.props.task.name}</Card.Header>
-              <Card.Meta>
-                  <button onClick={()=>this.props.deleteTask(this.props.task)}>X</button>
-              </Card.Meta>
+              <div className="delete">
+                  <div className="icon" onClick={()=>this.props.deleteTask(this.props.task)}>delete</div>
+              </div>
             <Card.Meta>
                 <input type="checkbox" checked={this.state.completed} onChange={this.onCheck}></input>
             </Card.Meta>
