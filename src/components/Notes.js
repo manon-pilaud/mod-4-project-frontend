@@ -11,8 +11,7 @@ export default class Notes extends React.Component{
           <p>{this.props.note.body}</p>
           </div>
           <div className="delete-update">
-          <div className="icon">delete</div>
-          <div className="icon">update</div>
+          <div className="icon" onClick={()=>this.props.deleteNote(this.props.note)}>delete</div>
           </div>
         </div>
     )

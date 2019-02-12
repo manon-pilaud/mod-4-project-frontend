@@ -232,6 +232,22 @@ class App extends React.Component {
  //Reflect it on front end
   }
 
+  deleteNote=(noteObj)=>{
+    fetch(`http://localhost:3000/notes/${noteObj.id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(noteObj=>{
+      let copyDays = [...this.state.days]
+      let dayToModify = copyDays.find(day=>day.id=== noteObj.day_id)
+      let index = dayToModify.notes.findIndex(ev=>ev.id === noteObj.id)
+      dayToModify.notes.splice(index,1)
+      this.setState({
+        days: copyDays
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -254,6 +270,7 @@ class App extends React.Component {
                   submitQuote={this.createQuote}
                   submitNote={this.createNewNote}
                   editQuote={this.editQuote}
+                  deleteNote={this.deleteNote}
               />
             )
         }

@@ -10,7 +10,8 @@ export default class NotesList extends React.Component{
             <h2>NOTES:</h2>
           </center>
         {this.props.notes.notes.map(note=>
-            <Notes key={note.id} note={note}/>
+            <Notes key={note.id} note={note}
+              deleteNote={this.props.deleteNote}/>
         )
         }
         <NoteForm

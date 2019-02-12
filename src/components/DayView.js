@@ -20,7 +20,9 @@ export default class DayView extends React.Component{
         <br/>
         <NotesList
           notes={this.props.dayInfo}
-          submitNote={this.props.submitNote}/>
+          submitNote={this.props.submitNote}
+          deleteNote={this.props.deleteNote}
+          />
 
       <div className="task-container">
         <center>
