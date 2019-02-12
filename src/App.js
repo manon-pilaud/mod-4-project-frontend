@@ -216,6 +216,22 @@ class App extends React.Component {
     })
   }
 
+  editQuote=(edit)=>{
+    fetch(`http://localhost:3000/quotes/${edit.quoteId}`,{
+     method: "PATCH",
+     headers:{
+       "Content-Type" : "application/json",
+       "Accept" : "application/json"
+     },
+     body: JSON.stringify({
+       phrase: edit.text
+     })
+   })
+ .then(response=>response.json())
+ .then(edit=>{console.log(edit)})
+ //Reflect it on front end
+  }
+
   render() {
     return (
       <div className="App">
@@ -237,7 +253,7 @@ class App extends React.Component {
                   deleteEvent={this.deleteEvent}
                   submitQuote={this.createQuote}
                   submitNote={this.createNewNote}
-
+                  editQuote={this.editQuote}
               />
             )
         }
