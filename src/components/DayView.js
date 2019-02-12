@@ -6,9 +6,19 @@ import TaskForm from './TaskForm'
 import { Button, Checkbox, Form} from 'semantic-ui-react'
 import Quote from './Quote'
 import NotesList from './NotesList'
+import StarRatingComponent from 'react-star-rating-component';
 
 export default class DayView extends React.Component{
+  constructor() {
+  super();
+  this.state = {
+    rating: 1
+  };
+}
 
+onStarClick(nextValue, prevValue, name) {
+  this.setState({rating: nextValue});
+}
   render(props){
     return this.props.dayInfo?(
       <div>
@@ -17,6 +27,14 @@ export default class DayView extends React.Component{
           quote={this.props.dayInfo}
           submitQuote={this.props.submitQuote}
           editQuote={this.props.editQuote}/>
+
+            <StarRatingComponent
+               name="rate1"
+               starCount={5}
+               value={this.state.rating}
+               onStarClick={this.onStarClick.bind(this)}
+            />
+
         <br/>
         <NotesList
           notes={this.props.dayInfo}
