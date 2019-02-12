@@ -41,14 +41,14 @@ export default class EventCard extends React.Component{
        })
      })
      .then(res=>res.json())
+     .then(this.setState({
+       clicked: false
+     }))
      .then(eventInfo=>{
        this.setState({
          eventObj: eventInfo
        })
        })
-    .then(this.setState({
-        clicked: false
-    }))
     }
 
   render(props){
@@ -64,13 +64,13 @@ export default class EventCard extends React.Component{
               <Icon onClick={this.handleClick} size='small' name='sync alternate' />
             </div>
             </div>
-            <Card.Header>{this.props.event.name}</Card.Header>
+            <Card.Header>{this.state.eventObj.name}</Card.Header>
             <br/>
             <Card.Meta>
-                Time:{this.props.event.time}
+                Time:{this.state.eventObj.time}
             </Card.Meta>
             <Card.Meta>
-                Location:{this.props.event.location}
+                Location:{this.state.eventObj.location}
             </Card.Meta>
             <br/>
             <Card.Meta>
