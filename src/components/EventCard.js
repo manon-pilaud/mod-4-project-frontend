@@ -7,7 +7,8 @@ export default class EventCard extends React.Component{
     super(props)
     this.state = {
       completed: props.event.completed,
-      clicked:false
+      clicked:false,
+      eventObj: props.event
     }
   }
 
@@ -26,9 +27,28 @@ export default class EventCard extends React.Component{
         clicked: !this.state.clicked
       })
     }
-
     editEvent=(eventInfo)=>{
-      console.log(eventInfo)
+      fetch(`http://localhost:3000/events/${eventInfo.eventId}`,{
+       method: "PATCH",
+       headers:{
+         "Content-Type" : "application/json",
+         "Accept" : "application/json"
+       },
+       body: JSON.stringify({
+         name: eventInfo.name,
+         location: eventInfo.location,
+         time: eventInfo.time
+       })
+     })
+     .then(res=>res.json())
+     .then(eventInfo=>{
+       this.setState({
+         eventObj: eventInfo
+       })
+       })
+    .then(this.setState({
+        clicked: false
+    }))
     }
 
   render(props){
