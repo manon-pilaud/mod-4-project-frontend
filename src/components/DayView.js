@@ -17,16 +17,50 @@ export default class DayView extends React.Component{
     water: 1
   };
 }
+componentDidMount(){
+  this.setState({
+    rating: this.props.dayInfo.happiness,
+    water: this.props.dayInfo.water
+  })
+}
 
 onStarClick(nextValue, prevValue, name) {
-  this.setState({rating: nextValue});
+  this.setState({rating: nextValue},()=>{
+    console.log(this.state.rating)
+    fetch(`http://localhost:3000/days/${this.props.dayInfo.id}`,{
+     method: "PATCH",
+     headers:{
+       "Content-Type" : "application/json",
+       "Accept" : "application/json"
+     },
+     body: JSON.stringify({
+       happiness: this.state.rating
+     })
+   })
+ .then(response=>response.json())
+  });
 }
 
 onWaterClick(nextValue, prevValue, name) {
-  this.setState({water: nextValue});
+  this.setState({water: nextValue},
+    ()=>{
+      fetch(`http://localhost:3000/days/${this.props.dayInfo.id}`,{
+       method: "PATCH",
+       headers:{
+         "Content-Type" : "application/json",
+         "Accept" : "application/json"
+       },
+       body: JSON.stringify({
+         water: this.state.water
+       })
+     })
+   .then(response=>response.json())
+   .then(console.log("hi"))
+    });
 }
+
   render(props){
-    return this.props.dayInfo?(
+    return (
       <div>
         <h1 className="date-header">{this.props.dayInfo.date}</h1>
         <Quote
@@ -93,8 +127,6 @@ onWaterClick(nextValue, prevValue, name) {
       </div>
 
     </div>)
-  :
-  null
 
   }
 }

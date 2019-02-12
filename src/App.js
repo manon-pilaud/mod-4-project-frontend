@@ -273,7 +273,7 @@ class App extends React.Component {
             let dayUrlId = props.match.params.id
             let dayUrlIdInt = parseInt(dayUrlId)
             let dayInfo = this.state.days.find(day => day.id === dayUrlIdInt)
-            return(
+            return dayInfo? (
               <DayView
                   dayInfo={dayInfo}
                   handleEventSubmit={this.postEvent}
@@ -285,7 +285,7 @@ class App extends React.Component {
                   editQuote={this.editQuote}
                   deleteNote={this.deleteNote}
               />
-            )
+          ):null
         }
       }
       />
