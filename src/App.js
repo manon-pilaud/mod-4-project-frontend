@@ -52,8 +52,7 @@ class App extends React.Component {
           days: [...this.state.days,newDay],
           clickId: newDay.id
         })
-        window.history.pushState(null, '', `/days/${newDay.id}.id}`)
-        window.location.reload()
+        this.props.history.push(`/days/${newDay.id}`)
       })
     }
     else{
@@ -61,8 +60,8 @@ class App extends React.Component {
       this.setState({
         clickId: dayInfo.id
       })
-      window.history.pushState(null, '', `/days/${dayInfo.id}`)
-      window.location.reload()
+      this.props.history.push(`/days/${dayInfo.id}`)
+      // window.location.reload()
     }
     })
   }
