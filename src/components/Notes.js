@@ -7,7 +7,7 @@ export default class Notes extends React.Component{
     return(
         <div className="note">
           <div>
-          <h4>{this.props.note.name}</h4>
+          <h4>{this.props.note.name}:</h4>
           <p>{this.props.note.body}</p>
           </div>
           <div className="delete-update">

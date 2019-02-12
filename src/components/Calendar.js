@@ -85,6 +85,7 @@ class Calendar extends React.Component {
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
+
         );
         day = dateFns.addDays(day, 1);
       }

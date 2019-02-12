@@ -34,8 +34,15 @@ body {
 }
 
 .note-list{
+  position: relative;
   background-color: white;
   height:500px;
+}
+.note{
+  margin-left: 10px;
+}
+.note-button{
+  margin-left: 5px;
 }
 
 .card {

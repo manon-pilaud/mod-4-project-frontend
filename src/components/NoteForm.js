@@ -38,7 +38,7 @@ export default class NotesForm extends React.Component{
   render(props){
     return(
         <div>
-        <button onClick={this.handleShowClick}>New Note</button>
+        <button className="note-button" onClick={this.handleShowClick}>New Note</button>
         {this.state.clicked?
           <Form onSubmit={this.handleSubmit} className="create-form">
                   <Form.Field>

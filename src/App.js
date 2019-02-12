@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import Calendar from './components/Calendar'
 import Navbar from './components/Navbar'
 import DayView from './components/DayView'
-import {Route, Switch,Redirect} from 'react-router-dom'
+import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
 import './App.css';
 
 class App extends React.Component {
@@ -26,6 +26,8 @@ class App extends React.Component {
   }
 
   createDay=(dateObj)=>{
+    console.log("in createDay")
+    // console.log('this is when we are changing the url')
     this.setState({
       currentDayView: dateObj
     }, () => {
@@ -47,8 +49,13 @@ class App extends React.Component {
       .then(res=>res.json())
       .then(newDay=>{
         this.setState({
-          days: [...this.state.days,newDay]
+          days: [...this.state.days,newDay],
+          clickId: newDay.id
         })
+      })
+      .then(newDay=>{
+        window.history.pushState(null, '', `/days/${newDay.id}.id}`)
+        window.location.reload()
       })
     }
     else{
@@ -56,6 +63,8 @@ class App extends React.Component {
       this.setState({
         clickId: dayInfo.id
       })
+      window.history.pushState(null, '', `/days/${dayInfo.id}`)
+      window.location.reload()
     }
     })
   }
@@ -228,8 +237,9 @@ class App extends React.Component {
      })
    })
  .then(response=>response.json())
- .then(edit=>{console.log(edit)})
- //Reflect it on front end
+ .then(edit=>{
+    console.log(edit)
+   })
   }
 
   deleteNote=(noteObj)=>{
@@ -249,6 +259,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('In App render', this.props)
     return (
       <div className="App">
         <header>
@@ -292,4 +303,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default withRouter(App);

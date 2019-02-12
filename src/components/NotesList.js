@@ -14,6 +14,7 @@ export default class NotesList extends React.Component{
               deleteNote={this.props.deleteNote}/>
         )
         }
+        <br/>
         <NoteForm
         dayId={this.props.notes.id}
         submitNote={this.props.submitNote}/>
