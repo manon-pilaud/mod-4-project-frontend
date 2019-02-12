@@ -26,7 +26,6 @@ componentDidMount(){
 
 onStarClick(nextValue, prevValue, name) {
   this.setState({rating: nextValue},()=>{
-    console.log(this.state.rating)
     fetch(`http://localhost:3000/days/${this.props.dayInfo.id}`,{
      method: "PATCH",
      headers:{
@@ -55,7 +54,6 @@ onWaterClick(nextValue, prevValue, name) {
        })
      })
    .then(response=>response.json())
-   .then(console.log("hi"))
     });
 }
 
