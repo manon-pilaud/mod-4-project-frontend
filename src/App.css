@@ -18,13 +18,15 @@ body {
   font-size: 30px;
   text-align: center;
   background-image: url(https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/995981/580/386/m1/fpnw/wm0/marble-paper-textures-high-res-background-.jpg?1455562552&s=a31663013c969bd515b7e1fbc3d4ae80);
-  min-height:60px;
+  min-height:70px;
 }
 
 .quote{
   position: absolute;
   left:3%;
-  top:30%;
+  top:20%;
+  font-size: 25px;
+  line-height: 25px;
 }
 .quote-input{
   position: absolute;
