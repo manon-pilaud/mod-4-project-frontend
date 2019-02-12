@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
-
+import { Icon } from 'semantic-ui-react'
 export default class EventCard extends React.Component{
   constructor(props){
     super(props)
@@ -25,11 +25,14 @@ export default class EventCard extends React.Component{
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
           <Card.Content>
             <div className="delete">
+            <div className="icons">
               <div className="icon"
                 onClick={()=>this.props.deleteEvent(this.props.event)}>delete</div>
+              <Icon size='small' name='sync alternate' />
+            </div>
             </div>
             <Card.Header>{this.props.event.name}</Card.Header>
-
+            <br/>
             <Card.Meta>
                 Time:{this.props.event.time}
             </Card.Meta>

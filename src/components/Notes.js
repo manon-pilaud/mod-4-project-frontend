@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 
 
 export default class Notes extends React.Component{
@@ -12,6 +13,7 @@ export default class Notes extends React.Component{
           </div>
           <div className="delete-update">
           <div className="icon" onClick={()=>this.props.deleteNote(this.props.note)}>delete</div>
+          <Icon size='small' name='sync alternate' />
           </div>
         </div>
     )

@@ -47,7 +47,6 @@ export default class EventForm extends React.Component{
             <label>Name</label>
             <input onChange={this.handleEventChange} id="eventName" placeholder='Name' />
           </Form.Field>
-
           <Form.Field>
             <label>Location</label>
             <input onChange={this.handleEventChange} id="eventLocation" placeholder='Location' />

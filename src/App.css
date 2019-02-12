@@ -41,6 +41,9 @@ body {
 .note{
   margin-left: 10px;
 }
+.note h4{
+  margin-bottom:1px!important;
+}
 .note-button{
   margin-left: 5px;
 }
@@ -48,7 +51,7 @@ body {
 .card {
   background-color: white;
   width: 170px!important;
-  height: 160px!important;
+  min-height: 160px!important;
   text-align: center !important;
   display: block !important;
 }
