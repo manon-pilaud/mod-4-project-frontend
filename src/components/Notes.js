@@ -7,8 +7,15 @@ export default class Notes extends React.Component{
   constructor(){
     super()
     this.state={
-      clicked: false
+      clicked: false,
+      note: ""
     }
+  }
+
+  componentDidMount(){
+    this.setState({
+      note:this.props.note
+    })
   }
 
   handleClick=()=>{
@@ -17,16 +24,36 @@ export default class Notes extends React.Component{
     })
   }
 
-  editNote=()=>{
-    console.log("hi")
+  editNote=(editInfo)=>{
+    fetch(`http://localhost:3000/notes/${editInfo.noteId}`,{
+     method: "PATCH",
+     headers:{
+       "Content-Type" : "application/json",
+       "Accept" : "application/json"
+     },
+     body: JSON.stringify({
+       name: editInfo.title,
+       body: editInfo.body
+     })
+   })
+   .then(res=>res.json())
+   .then(this.setState({
+     clicked: false
+   }))
+   .then(editInfo=>{
+     this.setState({
+       note: editInfo
+     })
+     })
   }
+
   render(props){
     return(
       <div className="note">
         {!this.state.clicked?<div>
             <div>
-              <h4>{this.props.note.name}:</h4>
-              <p>{this.props.note.body}</p>
+              <h4>{this.state.note.name}:</h4>
+              <p>{this.state.note.body}</p>
             </div>
               <div className="delete-update">
                 <div className="icon" onClick={()=>this.props.deleteNote(this.props.note)}>delete</div>

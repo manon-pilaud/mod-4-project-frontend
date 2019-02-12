@@ -6,17 +6,14 @@ export default class NotesUpdateForm extends React.Component{
   constructor(){
     super()
     this.state={
-      clicked: false,
       title:"",
       body:"",
-      dayId: null,
       noteId: null
     }
   }
 
   componentDidMount(){
     this.setState({
-      dayId: this.props.noteInfo.day_id,
       noteId: this.props.noteInfo.id,
       title:this.props.noteInfo.name,
       body: this.props.noteInfo.body
@@ -41,14 +38,14 @@ export default class NotesUpdateForm extends React.Component{
         <Form className="create-form" onSubmit={this.handleSubmit}>
                 <Form.Field>
                   <label>Name</label>
-                  <input onChange={this.handleNoteChange} placeholder='Name' value={this.props.noteInfo.name} id="title"/>
+                  <input onChange={this.handleNoteChange} placeholder='Name' value={this.state.title} id="title"/>
                 </Form.Field>
 
                 <Form.Field>
                   <label>Enter Text</label>
-                  <input onChange={this.handleNoteChange} placeholder='Text'value={this.props.noteInfo.body}  id="body"/>
+                  <input onChange={this.handleNoteChange} placeholder='Text'value={this.state.body}  id="body"/>
                 </Form.Field>
-                <Button type='submit'>Create Note</Button>
+                <Button type='submit'>Update Note</Button>
           </Form>
       </div>
     )
