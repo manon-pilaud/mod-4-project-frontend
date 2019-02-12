@@ -7,17 +7,23 @@ import { Button, Checkbox, Form} from 'semantic-ui-react'
 import Quote from './Quote'
 import NotesList from './NotesList'
 import StarRatingComponent from 'react-star-rating-component';
-
+import WaterRatingComponent from 'react-star-rating-component';
+import { Icon } from 'semantic-ui-react'
 export default class DayView extends React.Component{
   constructor() {
   super();
   this.state = {
-    rating: 1
+    rating: 1,
+    water: 1
   };
 }
 
 onStarClick(nextValue, prevValue, name) {
   this.setState({rating: nextValue});
+}
+
+onWaterClick(nextValue, prevValue, name) {
+  this.setState({water: nextValue});
 }
   render(props){
     return this.props.dayInfo?(
@@ -27,13 +33,26 @@ onStarClick(nextValue, prevValue, name) {
           quote={this.props.dayInfo}
           submitQuote={this.props.submitQuote}
           editQuote={this.props.editQuote}/>
-
-            <StarRatingComponent
+        <br/>
+        <center>
+          <StarRatingComponent
                name="rate1"
                starCount={5}
+               renderStarIcon={() =>  <Icon size='big' name='smile' />}
                value={this.state.rating}
                onStarClick={this.onStarClick.bind(this)}
             />
+          <br/>
+            <WaterRatingComponent
+                 name="rate1"
+                 starCount={10}
+                 value={this.state.water}
+                 starColor={`#1e91ff`}
+                 renderStarIcon={() =>  <Icon size='big' name='tint' />}
+                 onStarClick={this.onWaterClick.bind(this)}
+              />
+
+        </center>
 
         <br/>
         <NotesList
