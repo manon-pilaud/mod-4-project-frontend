@@ -10,7 +10,7 @@ export default class Quote extends React.Component{
       quoteId: null,
     }
   }
-handleChange=(e)=>{
+handleEditChange=(e)=>{
   this.setState({
     text: e.target.value,
     dayId: this.props.quote.id,
@@ -18,8 +18,18 @@ handleChange=(e)=>{
   })
 }
 
+handleChange=(e)=>{
+  this.setState({
+    text: e.target.value,
+    dayId: this.props.quote.id,
+  })
+}
+
 handleEdit=(e)=>{
   e.preventDefault()
+  this.setState({
+    clicked: false
+  })
     return this.props.editQuote(this.state)
 }
 
@@ -43,7 +53,7 @@ handleClick=()=>{
             {!this.state.clicked?
           <div onClick={this.handleClick} className="quote">
             Today's Quote: {this.props.quote.quote.phrase}
-          </div>:<form onSubmit={this.handleEdit} ><input onChange={this.handleChange} className="quote-input"></input></form>}
+          </div>:<form onSubmit={this.handleEdit} ><input onChange={this.handleEditChange} className="quote-input"></input></form>}
           </div>
           :<form onSubmit={this.handleSubmit}>
             <input onChange={this.handleChange} className="quote-input" placeholder="Enter Quote"></input>}

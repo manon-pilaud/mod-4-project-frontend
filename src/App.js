@@ -26,8 +26,6 @@ class App extends React.Component {
   }
 
   createDay=(dateObj)=>{
-    console.log("in createDay")
-    // console.log('this is when we are changing the url')
     this.setState({
       currentDayView: dateObj
     }, () => {
@@ -52,8 +50,6 @@ class App extends React.Component {
           days: [...this.state.days,newDay],
           clickId: newDay.id
         })
-      })
-      .then(newDay=>{
         window.history.pushState(null, '', `/days/${newDay.id}.id}`)
         window.location.reload()
       })
@@ -238,8 +234,13 @@ class App extends React.Component {
    })
  .then(response=>response.json())
  .then(edit=>{
-    console.log(edit)
-   })
+     let copyDays = [...this.state.days]
+     let dayToModify = copyDays.find(day=>day.id=== edit.day_id)
+     dayToModify["quote"] = edit
+     this.setState({
+       days: copyDays
+    })
+  })
   }
 
   deleteNote=(noteObj)=>{
@@ -259,7 +260,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('In App render', this.props)
     return (
       <div className="App">
         <header>
