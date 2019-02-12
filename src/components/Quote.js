@@ -52,7 +52,7 @@ handleClick=()=>{
           <div>
             {!this.state.clicked?
           <div onClick={this.handleClick} className="quote">
-            Today's Quote: ❝ {this.props.quote.quote.phrase} ❞
+            ❝ {this.props.quote.quote.phrase} ❞
           </div>:<form onSubmit={this.handleEdit} ><input onChange={this.handleEditChange} className="quote-input"></input></form>}
           </div>
           :<form onSubmit={this.handleSubmit}>
