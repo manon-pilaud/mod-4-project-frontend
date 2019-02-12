@@ -41,7 +41,9 @@ class App extends React.Component {
         },
         body: JSON.stringify({
           date: stringDate,
-          user_id:1
+          user_id:1,
+          water: 1,
+          happiness:1
         })
       })
       .then(res=>res.json())

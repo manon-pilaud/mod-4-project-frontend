@@ -48,7 +48,7 @@ onWaterClick(nextValue, prevValue, name) {
                  starCount={10}
                  value={this.state.water}
                  starColor={`#1e91ff`}
-                 renderStarIcon={() =>  <Icon size='big' name='tint' />}
+                 renderStarIcon={() =>  <Icon size='large' name='tint' />}
                  onStarClick={this.onWaterClick.bind(this)}
               />
 
