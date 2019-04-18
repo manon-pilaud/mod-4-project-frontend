@@ -31,6 +31,9 @@ export default class EventForm extends React.Component{
   handleTaskSubmit=(e)=>{
     e.preventDefault()
     this.props.handleTaskSubmit(this.state)
+    this.setState({
+      taskForm: false
+    })
   }
   render(){
     return(

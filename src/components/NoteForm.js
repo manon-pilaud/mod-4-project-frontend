@@ -32,7 +32,11 @@ export default class NotesForm extends React.Component{
 
     handleSubmit=(e)=>{
       e.preventDefault()
+      this.setState({
+        clicked: false
+      })
       return this.props.submitNote(this.state)
+
     }
 
   render(props){

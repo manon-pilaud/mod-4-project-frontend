@@ -74,6 +74,7 @@ body {
   top:15%;
 }
 .date-header{
+  /* Fix header on big screen */
   position: absolute;
   top:15%;
   text-align: center;

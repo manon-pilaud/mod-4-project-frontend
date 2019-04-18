@@ -34,6 +34,9 @@ export default class EventForm extends React.Component{
     handleEventSubmit=(e)=>{
       e.preventDefault()
       this.props.handleEventSubmit(this.state)
+      this.setState({
+        eventForm: false
+      })
     }
   render(props){
 
